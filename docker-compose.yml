@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
 
     ports:
-      - '3002:4009'
+      - '8000:4009'
     volumes:
       - .:/api
       - /api/node_modules
