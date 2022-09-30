@@ -5,9 +5,9 @@ VERSION=""
 # get parameters
 while getopts v: flag
 do
-    case "${flag}" in
-        v) VERSION=${OPTARG};;
-    esac
+  case "${flag}" in
+    v) VERSION=${OPTARG};;
+  esac
 done
 
 # get highest tag number, and add v0.1.0 if doesn't exist
@@ -16,7 +16,7 @@ CURRENT_VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
 
 if [[ $CURRENT_VERSION == '' ]]
 then
-    CURRENT_VERSION='v'
+  CURRENT_VERSION='v0.1.0'
 fi
 echo "Current Version: $CURRENT_VERSION"
 
@@ -30,16 +30,16 @@ VNUM3=${CURRENT_VERSION_PARTS[2]}
 
 if [[ $VERSION == 'major' ]]
 then
-    VNUM=v$((VNUM1+1))
+  VNUM1=v$((VNUM1+1))
 elif [[ $VERSION == 'minor' ]]
 then
-    VNUM=v$((VNUM2+1))
+  VNUM2=$((VNUM2+1))
 elif [[ $VERSION == 'patch' ]]
 then
-    VNUM=v$((VNUM3+1))
+  VNUM3=$((VNUM3+1))
 else
-    echo "No version type (https://semver.org/) or incorrect type specified, try -v [major, minor, patch]"
-    exit 1
+  echo "No version type (https://semver.org/) or incorrect type specified, try: -v [major, minor, patch]"
+  exit 1
 fi
 
 # create new tag
