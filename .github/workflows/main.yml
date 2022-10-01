@@ -26,6 +26,9 @@ jobs:
     #   run: |
     #     bash ./build/git_update.sh -v patch
 
+    - name: Delete old docker image tags
+      uses: m3ntorship/action-dockerhub-cleanup@1.4
+
     - name: Build, Tag, and Push the Image to Amazon ECR
       id: build-image
       env:
