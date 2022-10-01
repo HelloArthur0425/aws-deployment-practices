@@ -33,6 +33,5 @@ jobs:
         ECR_REPOSITORY: backend
         # IMAGE_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
       run: |
-        docker image rm $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
