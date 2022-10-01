@@ -35,4 +35,3 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        aws ecs update-service --cluster CatAppCluster --service dockerImageService --force-new-deploymen
